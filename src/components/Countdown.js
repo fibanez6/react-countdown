@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import './Countdown.css';
 
 /**
  * Note :
@@ -80,50 +81,61 @@ class Countdown extends Component {
         return value;
     }
 
-    render() {
+    renderCountdown() {
         const countDown = this.state;
-
         return (
             <div className="Countdown">
-        <span className="Countdown-col">
-          <span className="Countdown-col-element">
-              <strong>{this.addLeadingZeros(countDown.days)}</strong>
-              <span>{countDown.days === 1 ? 'Day' : 'Days'}</span>
-          </span>
-        </span>
+                    <span className="Countdown-col">
+                      <span className="Countdown-col-element">
+                          <strong>{this.addLeadingZeros(countDown.days)}</strong>
+                          <span>{countDown.days === 1 ? 'Day' : 'Days'}</span>
+                      </span>
+                    </span>
 
-                <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.hours)}</strong>
-            <span>Hours</span>
-          </span>
-        </span>
+            <span className="Countdown-col">
+                      <span className="Countdown-col-element">
+                        <strong>{this.addLeadingZeros(countDown.hours)}</strong>
+                        <span>Hours</span>
+                      </span>
+                    </span>
 
 
-                <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.min)}</strong>
-            <span>Min</span>
-          </span>
-        </span>
+            <span className="Countdown-col">
+                      <span className="Countdown-col-element">
+                        <strong>{this.addLeadingZeros(countDown.min)}</strong>
+                        <span>Min</span>
+                      </span>
+                    </span>
 
-                <span className="Countdown-col">
-          <span className="Countdown-col-element">
-            <strong>{this.addLeadingZeros(countDown.sec)}</strong>
-            <span>Sec</span>
-          </span>
-        </span>
+            <span className="Countdown-col">
+                      <span className="Countdown-col-element">
+                        <strong>{this.addLeadingZeros(countDown.sec)}</strong>
+                        <span>Sec</span>
+                      </span>
+                    </span>
+            </div>
+        );
+    }
+
+    render() {
+        const { title } = this.props;
+        return (
+            <div className="ui container" style={{marginTop: '10px'}}>
+                <h3 className="title">{title}</h3>
+                {this.renderCountdown()}
             </div>
         );
     }
 }
 
 Countdown.propTypes = {
-    date: PropTypes.string.isRequired
+    date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
 };
 
 Countdown.defaultProps = {
-    date: new Date()
+    date: new Date(),
+    title: "Insert a title"
 };
 
 export default Countdown;
