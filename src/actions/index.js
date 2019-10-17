@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// const ROOT_URL = `http://api.fibanez.com`;
-const ROOT_URL = `http://localhost:3000`;
+const ROOT_URL = `http://api.fibanez.com`;
+// const ROOT_URL = `http://localhost:3000`;
 
 export const FETCH_CALENDAR  = 'FETCH_CALENDAR';
 
