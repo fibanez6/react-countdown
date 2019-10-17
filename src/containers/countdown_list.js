@@ -8,7 +8,7 @@ import { fetchCalendar } from '../actions/index';
 class CountdownList extends Component {
 
     componentDidMount() {
-        this.props.fetchCalendar();
+        this.props.fetchCalendar(20);
     }
 
     renderCountdown() {
