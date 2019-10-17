@@ -17,3 +17,11 @@
 .Countdown-col-element strong{
   font-size: 50px;
 }
+
+.Countdown-col-element-secs {
+  font-size: 10px;
+}
+
+.Countdown-col-element-secs strong{
+  font-size: 25px;
+}
