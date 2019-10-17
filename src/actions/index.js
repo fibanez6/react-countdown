@@ -5,8 +5,8 @@ const ROOT_URL = `http://api.fibanez.com`;
 
 export const FETCH_CALENDAR  = 'FETCH_CALENDAR';
 
-export function fetchCalendar() {
-    const url = `${ROOT_URL}/calendar/sample`;
+export function fetchCalendar(maxResults = 10) {
+    const url = `${ROOT_URL}/calendar/sample?maxResults=${maxResults}`;
     const resp = axios.get(url);
 
     return {
