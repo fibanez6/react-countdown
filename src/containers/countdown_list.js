@@ -66,7 +66,7 @@ class CountdownList extends Component {
             return (
                  <div key={index}>
                      {this.renderJourney(oneWayTrips)}
-                     {this.renderAccordion(event.accommodations)}
+                     {event.accommodations.length > 0  && this.renderAccordion(event.accommodations)}
                  </div>
             );
         });
