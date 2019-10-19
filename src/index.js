@@ -4,9 +4,11 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxPromise from 'redux-promise';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Routes from './Routes';
 import reducers from './reducers';
+
 
 
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
