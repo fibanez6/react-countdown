@@ -30,8 +30,10 @@ class CountdownList extends Component {
                 <ul class="list-group" key={index}>
                     <li class="list-group-item">
                         <div>
-                            <p>{accommodation.summary}</p>
-                            <p>{accommodation.location}</p>
+                            <p>{accommodation.summary}<br/>
+                            <strong>Location: </strong>{accommodation.location}<br/>
+                            <strong>Start: </strong>{accommodation.start.date}<br/>
+                            <strong>End: </strong>{accommodation.end.date}</p>
                         </div>
                     </li>
                 </ul>
