@@ -3,6 +3,7 @@ import moment from 'moment';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Countdown from '../components/countdown';
+import Weather from '../components/weather';
 import {fetchCalendar} from '../actions/index';
 import { Accordion, Card, Button } from 'react-bootstrap';
 
@@ -37,7 +38,6 @@ class CountdownList extends Component {
                         </div>
                     </li>
                 </ul>
-
             );
         });
     }
@@ -53,6 +53,7 @@ class CountdownList extends Component {
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
                         <Card.Body>
+                            <Weather />
                             {this.renderAccommodations(accommodations)}
                         </Card.Body>
                     </Accordion.Collapse>

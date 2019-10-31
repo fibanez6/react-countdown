@@ -9,8 +9,6 @@ import './index.css';
 import Routes from './Routes';
 import reducers from './reducers';
 
-
-
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
