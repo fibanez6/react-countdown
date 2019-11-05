@@ -29,6 +29,21 @@ class Weather extends Component {
     render() {
         const { weather } = this.props;
         const city = (weather.length > 0) ? weather[0].city : {};
+
+        let sunriseTime;
+        if (city.sunrise) {
+            const sunrise = new Date(0); // The 0 there is the key, which sets the date to the epoch
+            sunrise.setUTCSeconds(city.sunrise + city.timezone);
+            sunriseTime = sunrise.toLocaleTimeString('en-US', {timeZone: 'UTC'});
+        }
+
+        let sunsetTime;
+        if (city.sunset) {
+            const sunset = new Date(0);
+            sunset.setUTCSeconds(city.sunset + city.timezone);
+            sunsetTime = sunset.toLocaleTimeString('en-US', {timeZone: 'UTC'});
+        }
+
         const lat = (city.coord) ? city.coord.lat : '';
         const lon = (city.coord) ? city.coord.lon : '';
 
@@ -39,8 +54,8 @@ class Weather extends Component {
                     <ListGroup.Item>Country: {city.country}</ListGroup.Item>
                     <ListGroup.Item>Coordinates: lat={lat} lon: {lon}</ListGroup.Item>
                     <ListGroup.Item>Population: {city.population}</ListGroup.Item>
-                    <ListGroup.Item>Sunrise: {city.sunrise}</ListGroup.Item>
-                    <ListGroup.Item>Sunset: {city.sunset}</ListGroup.Item>
+                    <ListGroup.Item>Sunrise: {sunriseTime}</ListGroup.Item>
+                    <ListGroup.Item>Sunset: {sunsetTime}</ListGroup.Item>
                 </ListGroup>
                 <table className="table table-hover">
                     <thead>
