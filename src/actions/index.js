@@ -10,7 +10,7 @@ export const FETCH_CALENDAR  = 'FETCH_CALENDAR';
 export const FETCH_WEATHER  = 'FETCH_WEATHER';
 
 export function fetchCalendar(maxResults = 10) {
-    const url = `${ROOT_URL}/calendar/sample?maxResults=${maxResults}`;
+    const url = `${ROOT_URL}/journey/sample?maxResults=${maxResults}`;
     const resp = axios.get(url);
 
     return {
@@ -20,7 +20,7 @@ export function fetchCalendar(maxResults = 10) {
 }
 
 export function fetchWeather(city, countryCode) {
-    const url = `${OPEN_WEATHER_URL}&q=${city}&cnt=1`;
+    const url = `${OPEN_WEATHER_URL}&q=${city}&cnt=10`;
     const request = axios.get(url);             // Returns a promise
 
     // ReduxPromise middlewire (../components/app.js) resolves the promise, creates a new Action

@@ -5,6 +5,7 @@ export default function (state = [], action) {
         case FETCH_WEATHER:
             // return  state.concat([action.payload.data]); // creates a new instance of state array (collect city data)
             return [action.payload.data, ...state];  // same adobe
+        default:
+            return state;
     }
-    return state;
 }

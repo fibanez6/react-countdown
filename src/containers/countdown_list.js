@@ -20,16 +20,36 @@ class CountdownList extends Component {
             return (
                 <div key={index}>
                     <Countdown date={flight.start.dateTime} title={title}/>
+                    { this.renderWeatherAccordion(flight.to) }
                 </div>
             );
         });
     }
 
+    renderWeatherAccordion(city) {
+        return (
+            <Accordion>
+                <Card>
+                    <Card.Header>
+                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                            City Info
+                        </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                            <Weather city={ city }/>
+                        </Card.Body>
+                    </Accordion.Collapse>
+                </Card>
+            </Accordion>
+        )
+    }
+
     renderAccommodations(accommodations) {
         return _.map(accommodations, (accommodation, index) => {
             return (
-                <ul class="list-group" key={index}>
-                    <li class="list-group-item">
+                <ul className="list-group" key={index}>
+                    <li className="list-group-item">
                         <div>
                             <p>{accommodation.summary}<br/>
                             <strong>Location: </strong>{accommodation.location}<br/>
@@ -41,8 +61,7 @@ class CountdownList extends Component {
             );
         });
     }
-
-    renderAccordion(accommodations) {
+    renderAccommodationsAccordion(accommodations) {
         return (
             <Accordion>
                 <Card>
@@ -53,7 +72,6 @@ class CountdownList extends Component {
                     </Card.Header>
                     <Accordion.Collapse eventKey="0">
                         <Card.Body>
-                            <Weather />
                             {this.renderAccommodations(accommodations)}
                         </Card.Body>
                     </Accordion.Collapse>
@@ -68,8 +86,8 @@ class CountdownList extends Component {
             const oneWayTrips = event.flights.slice(0, half);
             return (
                  <div key={index}>
-                     {this.renderJourney(oneWayTrips)}
-                     {event.accommodations.length > 0  && this.renderAccordion(event.accommodations)}
+                     { this.renderJourney(oneWayTrips) }
+                     { event.accommodations.length > 0  && this.renderAccommodationsAccordion(event.accommodations) }
                  </div>
             );
         });
