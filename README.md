@@ -1,4 +1,37 @@
+# REACT JOURNEY
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Build Docker image
+```bash
+ docker build -t react-journey .
+```
+Push docker image to local repo
+```bash
+ docker tag react-journey pi3.local:5000/react-journey
+ docker push pi3.local:5000/react-journey
+```
+
+# Check local repo
+```html
+GET http://pi3.local:5000/v2/_catalog
+GET http://pi3.local:5000/v2/react-journey/manifests/latest
+```
+
+## Config
+![Image](doc/idea_config.png)
+
+## Run Docker image
+```bash
+docker run -d --name react-journey -p 3200:3200 --log-driver local --log-opt max-size=100m react-journey:latest
+```
+
+
+## is it running?
+```http request
+http://localhost:3200/
+```
+
 
 ## Available Scripts
 
@@ -7,7 +40,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3200](http://localhost:3200) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
@@ -17,7 +50,7 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm run build:dev` and `npm run build:prod`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
