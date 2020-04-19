@@ -8,8 +8,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```
 Push docker image to local repo
 ```bash
- docker tag react-journey pi3.local:5000/react-journey
- docker push pi3.local:5000/react-journey
+ docker tag react-journey pi3.local:5000/react-journey:latest
+ docker push pi3.local:5000/react-journey:latest
 ```
 
 # Check local repo
@@ -23,7 +23,7 @@ GET http://pi3.local:5000/v2/react-journey/manifests/latest
 
 ## Run Docker image
 ```bash
-docker run -d --name react-journey -p 3200:3200 --log-driver local --log-opt max-size=100m react-journey:latest
+docker run -d --name react-journey -p 3200:3200 --log-driver local --log-opt max-size=100m react-journey
 ```
 
 
