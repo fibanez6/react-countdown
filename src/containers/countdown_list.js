@@ -10,7 +10,8 @@ import { Accordion, Card, Button } from 'react-bootstrap';
 class CountdownList extends Component {
 
     componentDidMount() {
-        this.props.fetchCalendar(20);
+        let maxResult = process.env.REACT_APP_JOURNEY_MAX_RESULTS || 20;
+        this.props.fetchCalendar(maxResult);
     }
 
     renderJourney(event) {
